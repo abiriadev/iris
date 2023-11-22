@@ -43,6 +43,10 @@ func AnsiBgUnchecked(f uint8) string {
 	return fmt.Sprintf("\x1b[%dm", f+40)
 }
 
+func AnsiFgBgUnchecked(f uint8, b uint8) string {
+	return fmt.Sprintf("\x1b[%d;%dm", f+30, b+40)
+}
+
 func Ansi256Fg(f uint8) string {
 	return fmt.Sprintf("\x1b[38;5;%dm", f)
 }
@@ -55,6 +59,14 @@ func Ansi256FgBg(f uint8, b uint8) string {
 	return fmt.Sprintf("\x1b[38;5;%dm\x1b[48;5;%dm", f, b)
 }
 
-func Rgb(r uint8, g uint8, b uint8) string {
+func RgbFg(r uint8, g uint8, b uint8) string {
 	return fmt.Sprintf("\x1b[38;2;%d;%d;%dm", r, g, b)
+}
+
+func RgbBg(r uint8, g uint8, b uint8) string {
+	return fmt.Sprintf("\x1b[48;2;%d;%d;%dm", r, g, b)
+}
+
+func RgbFgBg(fr uint8, fg uint8, fb uint8, br uint8, bg uint8, bb uint8) string {
+	return fmt.Sprintf("\x1b[38;2;%d;%d;%dm\x1b[48;2;%d;%d;%dm", fr, fg, fb, br, bg, bb)
 }
