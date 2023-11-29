@@ -30,4 +30,4 @@ $ go run ./examples/gradient
 $ go run ./examples/xor
 ```
 
-![](./assets/xor.png)
+<img src="./assets/xor.png" width="500">
