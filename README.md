@@ -10,11 +10,24 @@
 
 ## Demo
 
+Try these examples in your terminal!
+
 ```sh
 $ git clone https://github.com/abiriadev/iris && cd iris
+```
+
+### Gradient
+
+```sh
 $ go run ./examples/gradient
 ```
 
-![](./demo.png)
+![](./assets/gradient.png)
 
-Try this example in your terminal!
+### XOR fractal
+
+```sh
+$ go run ./examples/xor
+```
+
+![](./assets/xor.png)
