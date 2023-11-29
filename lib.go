@@ -36,6 +36,10 @@ const (
 	WhiteBg = "\x1b[47m"
 )
 
+func ushort2uchar(c uint32) uint8 {
+	return uint8(c / 256)
+}
+
 func AnsiFgUnchecked(f uint8) string {
 	return fmt.Sprintf("\x1b[%dm", f+30)
 }
@@ -66,7 +70,7 @@ func RgbFg(r uint8, g uint8, b uint8) string {
 
 func ColorFg(color color.Color) string {
 	r, g, b, _ := color.RGBA()
-	return RgbFg(uint8(r/0xff), uint8(g/0xff), uint8(b/0xff))
+	return RgbFg(ushort2uchar(r), ushort2uchar(g), ushort2uchar(b))
 }
 
 func RgbBg(r uint8, g uint8, b uint8) string {
@@ -75,7 +79,7 @@ func RgbBg(r uint8, g uint8, b uint8) string {
 
 func ColorBg(color color.Color) string {
 	r, g, b, _ := color.RGBA()
-	return RgbBg(uint8(r/0xff), uint8(g/0xff), uint8(b/0xff))
+	return RgbBg(ushort2uchar(r), ushort2uchar(g), ushort2uchar(b))
 }
 
 func RgbFgBg(fr uint8, fg uint8, fb uint8, br uint8, bg uint8, bb uint8) string {
@@ -85,5 +89,5 @@ func RgbFgBg(fr uint8, fg uint8, fb uint8, br uint8, bg uint8, bb uint8) string 
 func ColorFgBg(fcolor color.Color, bcolor color.Color) string {
 	fr, fg, fb, _ := fcolor.RGBA()
 	br, bg, bb, _ := bcolor.RGBA()
-	return RgbFgBg(uint8(fr/0xff), uint8(fg/0xff), uint8(fb/0xff), uint8(br/0xff), uint8(bg/0xff), uint8(bb/0xff))
+	return RgbFgBg(ushort2uchar(fr), ushort2uchar(fg), ushort2uchar(fb), ushort2uchar(br), ushort2uchar(bg), ushort2uchar(bb))
 }
