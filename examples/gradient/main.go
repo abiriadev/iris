@@ -14,21 +14,41 @@ func showGrad(grad colorgrad.Gradient, col int) {
 	}
 
 	fmt.Printf("%s\n\n", iris.Reset)
-
 }
 
 func main() {
 	col, _, _ := term.GetSize(0)
 
-	grad, _ := colorgrad.NewGradient().Build()
+	monochrome, _ :=
+		colorgrad.NewGradient().Build()
 
-	showGrad(grad, col)
+	w1, _ := colorgrad.NewGradient().
+		HtmlColors("#C41189", "#00BFFF", "#FFD700").
+		Build()
+	w2, _ := colorgrad.NewGradient().
+		HtmlColors("gold", "hotpink", "darkturquoise").
+		Build()
+	w3, _ := colorgrad.NewGradient().
+		HtmlColors("#7d6edd", "#e673f7", "#bbc6f7").
+		Build()
 
-	grad2 := colorgrad.Sinebow()
+	w4, _ := colorgrad.NewGradient().
+		HtmlColors("deeppink", "gold", "seagreen").
+		Build()
 
-	showGrad(grad2, col)
-
-	grad3 := colorgrad.Rainbow()
-
-	showGrad(grad3, col)
+	for _, g := range []colorgrad.Gradient{
+		monochrome,
+		colorgrad.Sinebow(),
+		colorgrad.Rainbow(),
+		w3,
+		colorgrad.Viridis(),
+		colorgrad.Plasma(),
+		colorgrad.Spectral(),
+		colorgrad.Warm(),
+		colorgrad.Cool(),
+		colorgrad.Magma(),
+		w1, w2, w4,
+	} {
+		showGrad(g, col)
+	}
 }
