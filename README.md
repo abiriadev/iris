@@ -16,3 +16,5 @@ $ go run ./examples/gradient
 ```
 
 ![](./demo.png)
+
+Try this example in your terminal!
