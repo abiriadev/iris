@@ -2,6 +2,7 @@ package iris
 
 import (
 	"fmt"
+	"image/color"
 )
 
 const Reset = "\x1b[0m"
@@ -63,10 +64,26 @@ func RgbFg(r uint8, g uint8, b uint8) string {
 	return fmt.Sprintf("\x1b[38;2;%d;%d;%dm", r, g, b)
 }
 
+func ColorFg(color color.Color) string {
+	r, g, b, _ := color.RGBA()
+	return RgbFg(uint8(r), uint8(g), uint8(b))
+}
+
 func RgbBg(r uint8, g uint8, b uint8) string {
 	return fmt.Sprintf("\x1b[48;2;%d;%d;%dm", r, g, b)
 }
 
+func ColorBg(color color.Color) string {
+	r, g, b, _ := color.RGBA()
+	return RgbBg(uint8(r), uint8(g), uint8(b))
+}
+
 func RgbFgBg(fr uint8, fg uint8, fb uint8, br uint8, bg uint8, bb uint8) string {
 	return fmt.Sprintf("\x1b[38;2;%d;%d;%dm\x1b[48;2;%d;%d;%dm", fr, fg, fb, br, bg, bb)
+}
+
+func ColorFgBg(fcolor color.Color, bcolor color.Color) string {
+	fr, fg, fb, _ := fcolor.RGBA()
+	br, bg, bb, _ := bcolor.RGBA()
+	return RgbFgBg(uint8(fr), uint8(fg), uint8(fb), uint8(br), uint8(bg), uint8(bb))
 }
