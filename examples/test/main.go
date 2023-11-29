@@ -1,14 +1,15 @@
 package main
 
 import (
-	// "fmt"
 	"fmt"
 	"math"
+
+	"github.com/abiriadev/iris"
 )
 
 func main() {
 	for i := 0; i <= math.MaxUint8; i++ {
 		i := uint8(i)
-		fmt.Printf("%sForeground %d%s\t%sBackground %d%s\n", Ansi256Fg(i), i, Reset, Ansi256Bg(i), i, Reset)
+		fmt.Printf("%sForeground %d%s\t%sBackground %d%s\n", iris.Ansi256Fg(i), i, iris.Reset, iris.Ansi256Bg(i), i, iris.Reset)
 	}
 }
