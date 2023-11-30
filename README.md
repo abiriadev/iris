@@ -31,3 +31,13 @@ $ go run ./examples/xor
 ```
 
 <img src="./assets/xor.png" width="500">
+
+### IRIScat
+
+[lolcat](https://github.com/busyloop/lolcat) implementation with IRIS.
+
+```sh
+$ figlet 'IRIScat: like lolcat but with IRIS' | cowsay -n | go run ./examples/iriscat
+```
+
+![](./assets/iriscat.png)
