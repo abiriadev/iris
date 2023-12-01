@@ -12,7 +12,7 @@ import (
 func fitSize() int {
 	col, row, _ := term.GetSize(0)
 
-	m := min(col, row)
+	m := min(col/2, row)
 
 	if m == 0 {
 		return m
